@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from raincheck import models
+
+
+admin.site.register(models.Customer)
+admin.site.register(models.Location)
+admin.site.register(models.Email)
+admin.site.register(models.Plant)
