@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '0!wm%@m_ee+lre6qg5^j&q2ymx%+0(
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = [
-    'https://murmuring-shelf-65530.herokuapp.com',
+    'murmuring-shelf-65530.herokuapp.com',
     '127.0.0.1',
 ]
 
