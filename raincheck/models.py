@@ -14,16 +14,19 @@ class Customer(models.Model):
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
+    country = models.CharField(max_length=50, null=True, blank=True)
+    continent = models.CharField(max_length=20, null=True, blank=True)
     last_rained = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return ', '.join([self.name, self.country])
 
 
 class Plant(models.Model):
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
+    reference = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
