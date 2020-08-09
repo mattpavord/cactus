@@ -14,13 +14,13 @@ class Customer(models.Model):
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    region = models.CharField(max_length=100, unique=True)
     country = models.CharField(max_length=50, null=True, blank=True)
     continent = models.CharField(max_length=20, null=True, blank=True)
     last_rained = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return ', '.join([self.name, self.country])
+        return ', '.join([self.region, self.country])
 
 
 class Plant(models.Model):
