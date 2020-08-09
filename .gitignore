@@ -74,3 +74,6 @@ report.xml
 # Make state files
 .make.*
 
+# Database
+db.sqlite3
+
