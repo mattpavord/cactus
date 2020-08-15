@@ -33,7 +33,7 @@ class Plant(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a particular instance of the model."""
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('plant-detail', args=[str(self.id)])
 
 
 class Email(models.Model):
