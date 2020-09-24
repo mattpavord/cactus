@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
-from raincheck.models import Plant, Customer
+from raincheck.models import Plant, Customer, CustomerPlant
 
 
 def index(request):
@@ -23,3 +23,13 @@ class PlantListView(generic.ListView):
 
 class PlantDetailView(generic.DetailView):
     model = Plant
+
+
+class PlantRegisterView(generic.CreateView):
+    model = CustomerPlant
+    fields = ['plant']
+
+    def form_valid(self, form):
+        print(self.request.user)
+        form.instance.user = self.request.user
+        return super().form_valid(form)

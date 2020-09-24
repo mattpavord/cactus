@@ -6,7 +6,6 @@ from django.urls import reverse
 class Customer(models.Model):
     email = models.EmailField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    plants = models.ManyToManyField("Plant")
     last_emailed = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
@@ -34,6 +33,14 @@ class Plant(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a particular instance of the model."""
         return reverse('plant-detail', args=[str(self.id)])
+
+
+class CustomerPlant(models.Model):  # join table gives more flexibility than m2m field
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('customerplant:detail', args=[str(self.id)])
 
 
 class Email(models.Model):
