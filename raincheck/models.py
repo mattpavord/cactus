@@ -3,15 +3,6 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
-class Customer(models.Model):
-    email = models.EmailField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    last_emailed = models.DateTimeField(null=True, blank=True)
-
-    def __str__(self):
-        return self.email
-
-
 class Location(models.Model):
     region = models.CharField(max_length=100, unique=True)
     country = models.CharField(max_length=50, null=True, blank=True)
@@ -36,13 +27,13 @@ class Plant(models.Model):
 
 
 class CustomerPlant(models.Model):  # join table gives more flexibility than m2m field
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE)
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse('customerplant:detail', args=[str(self.id)])
+        return reverse('customerplant-detail', args=[str(self.id)])
 
 
 class Email(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="sent_emails")
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sent_emails")
     datetime = models.DateTimeField(auto_now=True)

@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ customerplant.name }}</h1>
+
+  <p><strong>Customer ID:</strong> <a href="">{{ customerplant.customer_id }}</a></p>
+  <p><strong>Plant:</strong> {{ customerplant.plant.name }}</p>
+
+{% endblock %}
