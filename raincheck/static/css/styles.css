@@ -1,5 +1,13 @@
 .sidebar-nav {
     margin-top: 20px;
-    padding: 0;
+    padding: 38px;
     list-style: none;
+    color: #8a8a8a;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.test {
+    /*background-color: forestgreen;*/
+    color: crimson;
 }

@@ -1,17 +1,20 @@
 <html>
     <head>
         <title>UpdateView</title>
-
     </head>
 
     <body>
-<form method="POST">{% csrf_token %}
+        <form method="POST">{% csrf_token %}
 
-<!-- form variable -->
- {{ form.as_p }}
+        <!-- form variable -->
+         {{ form.as_p }}
 
-  <input type="submit" name="sumbit">
-</form>
+          <input type="submit" name="submit">
+        </form>
+
+        {% load static %}
+        <link rel="stylesheet"  href="{%  static  'css/styles.css'  %}">
+        <div class="test">HELLO</div>
     </body>
 
 </html>
