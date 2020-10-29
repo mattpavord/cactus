@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% block title %}<title>Cactus Hugger</title>{% endblock %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    {% block title %}<title>Cactus Hugger</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-2">
-      {% block sidebar %}
-        <div class="nav-bar">
-          <a href="{% url 'login' %}">Login</a>
-          <a href="{% url 'index' %}">Home</a>
-          <a href="{% url 'plants' %}">All plants</a>
-          <a href="{% url 'plant-register' %}">Add plants</a>
-        </div>
-     {% endblock %}
-      </div>
-      <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+    <div class="container-fluid">
+        {% block sidebar %}
+            <div class="nav-bar">
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'plants' %}">All plants</a>
+                <a href="{% url 'plant-register' %}">Add plants</a>
+            </div>
+        {% endblock %}
     </div>
-  </div>
+    <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
 </body>
 </html>
