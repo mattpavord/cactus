@@ -1,11 +1,21 @@
 .nav-bar {
-    margin-top: 20px;
-    padding: 20px;
-    list-style: none;
-    color: #8a8a8a;
-    text-decoration: none;
-    transition: color 0.5s;
+    display: flex;
+    justify-content: space-between;
+    padding: 38px;
+}
+
+.left-side {
+    display: flex;
+}
+
+.nav-bar > .left-side > div {
+    margin-right: 20px;
+    font-size: 0.9em;
     text-transform: uppercase;
+}
+
+.nav-link-wrapper:hover {
+    border-bottom: 1px solid black;
 }
 
 body {

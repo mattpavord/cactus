@@ -8,13 +8,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container">
         {% block sidebar %}
             <div class="nav-bar">
-                <a href="{% url 'login' %}">Login</a>
-                <a href="{% url 'index' %}">Home</a>
-                <a href="{% url 'plants' %}">All plants</a>
-                <a href="{% url 'plant-register' %}">Add plants</a>
+                <div class="left-side">
+                    <div class="nav-link-wrapper">
+                        <a href="{% url 'login' %}">Login</a>
+                    </div>
+                    <div class="nav-link-wrapper">
+                        <a href="{% url 'index' %}">Home</a>
+                    </div>
+                    <div class="nav-link-wrapper">
+                        <a href="{% url 'plants' %}">All plants</a>
+                    </div>
+                    <div class="nav-link-wrapper">
+                        <a href="{% url 'plant-register' %}">Add plants</a>
+                    </div>
+                </div>
             </div>
         {% endblock %}
     </div>
