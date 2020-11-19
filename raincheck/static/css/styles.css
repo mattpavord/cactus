@@ -50,19 +50,17 @@ body {
 /* Home page */
 
 .home-image {
-    padding-bottom: 1000px;
     background-image: url("../raincheck/media/night_succulent.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
     min-height: 100%;
+    min-width: 100%;
 }
 
 .home-page-box {
-    position: absolute;
-    top: 50%;
-    left: 40%;
+    padding: 20%;
     margin: auto;
     text-transform: uppercase;
     color: papayawhip;
@@ -82,14 +80,6 @@ body {
 
 /* FORMS */
 
-.submission-form{
-    max-width: 500px;
-    padding: 20px;
-    width: 100%;
-    position: absolute;
-    left: 30%;
-    line-height: 200%;
-}
 
 input[type=text], input[type=password], select, textarea{
     width: 100%;
@@ -100,13 +90,3 @@ input[type=text], input[type=password], select, textarea{
     resize: vertical;
 }
 
-input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    margin-top: 20px;
-    width: 20%;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}

@@ -1,13 +1,13 @@
 {% extends "base_generic.html" %}
 
 {%  block content %}
-    <div class="submission-form">
+    <div class="container form-group">
         <form method="POST">{% csrf_token %}
 
         <!-- form variable -->
          {{ form.as_p }}
 
-          <input type="submit" name="submit">
+          <input type="submit" class="btn btn-primary mb-2" name="submit">
         </form>
         <a href="{% url 'signup'%}">Signup</a>
     </div>

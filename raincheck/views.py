@@ -18,6 +18,10 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
+def catalogue_plant(request):
+    return render(request, 'raincheck/catalogue_plant.html')
+
+
 class PlantListView(generic.ListView):
     model = Plant
 
