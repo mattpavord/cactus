@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     padding: 38px;
-    background: antiquewhite;
+    background: #ab5d6a;
 }
 
 .left-side {
@@ -24,7 +24,7 @@
 }
 
 .nav-link-wrapper a {
-    color: #8a8a8a;
+    color: papayawhip;
     text-decoration: none;
     transition: color 0.5s;
 }
@@ -49,8 +49,8 @@ body {
 
 /* Home page */
 
-.home-page {
-    padding-bottom: 800px;
+.home-image {
+    padding-bottom: 1000px;
     background-image: url("../raincheck/media/night_succulent.jpg");
     background-attachment: fixed;
     background-position: center;
@@ -67,6 +67,16 @@ body {
     text-transform: uppercase;
     color: papayawhip;
     letter-spacing: 8px;
+    text-align: center;
+}
+
+.center {
+    text-align:center;
+    margin: auto;
+    padding-top: 50px;
+    color: #8a8a8a;
+    max-width: 600px;
+    padding-bottom: 50px;
 }
 
 
@@ -76,6 +86,9 @@ body {
     max-width: 500px;
     padding: 20px;
     width: 100%;
+    position: absolute;
+    left: 30%;
+    line-height: 200%;
 }
 
 input[type=text], input[type=password], select, textarea{
