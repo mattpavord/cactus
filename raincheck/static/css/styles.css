@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     padding: 38px;
+    background: antiquewhite;
 }
 
 .left-side {
@@ -41,7 +42,31 @@
 body {
     line-height: 1.6;
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+/* Home page */
+
+.home-page {
+    padding-bottom: 800px;
+    background-image: url("../raincheck/media/night_succulent.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    min-height: 100%;
+}
+
+.home-page-box {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin: auto;
+    text-transform: uppercase;
+    color: papayawhip;
+    letter-spacing: 8px;
 }
 
 
@@ -71,15 +96,4 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-/* IMAGES */
-
-.bgimg {
-    background-image: url("../raincheck/media/night_succulent.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    min-height: 100%;
 }
