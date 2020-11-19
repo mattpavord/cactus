@@ -1,9 +1,7 @@
-<html>
-    <head>
-        <title>UpdateView</title>
-    </head>
+{% extends "base_generic.html" %}
 
-    <body>
+{%  block content %}
+    <div class="submission-form">
         <form method="POST">{% csrf_token %}
 
         <!-- form variable -->
@@ -11,10 +9,6 @@
 
           <input type="submit" name="submit">
         </form>
+    </div>
 
-        {% load static %}
-        <link rel="stylesheet"  href="{%  static  'css/styles.css'  %}">
-        <div class="test">HELLO</div>
-    </body>
-
-</html>
+{%  endblock %}

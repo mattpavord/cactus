@@ -1,12 +1,15 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Cactus Hugger Home</h1>
-  <p>Welcome to Cactus Hugger, a website developed by <em>Matthew Pavord</em>!</p>
-  <h2>Dynamic content</h2>
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Plants:</strong> {{ num_plants }}</li>
-    <li><strong>Customers:</strong> {{ num_customers }}</li>
-  </ul>
+    <div class="bgimg" id="home">
+        <h1>Cactus Hugger Home</h1>
+        <p>Welcome to Cactus Hugger, a website developed by <em>Matthew Pavord</em>!</p>
+        <h2>Dynamic content</h2>
+        <p>The library has the following record counts:</p>
+        <ul>
+            <li><strong>Plants:</strong> {{ num_plants }}</li>
+            <li><strong>Customers:</strong> {{ num_customers }}</li>
+        </ul>
+    </div>
+{#    {%  load static %} <img src="{% static "raincheck/media/night_succulent.jpg" %}" alt="home"/>#}
 {% endblock %}
