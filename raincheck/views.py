@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views import generic
 
 from raincheck.models import Plant, CustomerPlant
+from raincheck.forms import CataloguePlantForm
 
 
 def index(request):
@@ -19,7 +20,15 @@ def index(request):
 
 
 def catalogue_plant(request):
-    return render(request, 'raincheck/catalogue_plant.html')
+    if request.method == 'POST':
+        form = CataloguePlantForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # do stuff here
+            return redirect(settings.LOGIN_REDIRECT_URL)
+    else:
+        form = CataloguePlantForm()
+    return render(request, 'signup.html', {'form': form})
 
 
 class PlantListView(generic.ListView):

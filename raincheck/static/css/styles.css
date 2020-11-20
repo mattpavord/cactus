@@ -82,6 +82,7 @@ body {
 
 .skinny-form {
     max-width: 30%;
+
 }
 
 input[type=text], input[type=password], select, textarea{
@@ -93,3 +94,9 @@ input[type=text], input[type=password], select, textarea{
     resize: vertical;
 }
 
+/* TEXT */
+.burgundy-title{
+    color: #ab5d6a;
+    margin-top: 30px;
+    text-align: center;
+}
