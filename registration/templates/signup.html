@@ -1,11 +1,22 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-    <div class="container form-group">
+    <div class="container form-group m-auto pt-2 skinny-form">
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" class="btn btn-primary mb-2" name="signup">
+            {% for field in form %}
+                <p>
+                    <b>{{ field.label_tag }}</b><br>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+                <input type="submit" class="btn btn-primary mb-2" name="signup">
         </form>
     </div>
 {% endblock %}

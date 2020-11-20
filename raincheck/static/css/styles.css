@@ -80,6 +80,9 @@ body {
 
 /* FORMS */
 
+.skinny-form {
+    max-width: 30%;
+}
 
 input[type=text], input[type=password], select, textarea{
     width: 100%;
