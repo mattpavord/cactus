@@ -1,16 +1,20 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Plant List</h1>
-  {% if plant_list %}
-  <ul>
-    {% for plant in plant_list %}
-      <li>
-        <a href="{{ plant.get_absolute_url }}">{{ plant.name }}</a> ({{plant.location}})
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no plants in the catalogue.</p>
-  {% endif %}
+    <h1 class="burgundy-title">Plant List</h1>
+    {% if plant_list %}
+        <ul style="list-style-type: none">
+            {% for plant in plant_list %}
+                <li>
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ plant.image.url }}" class="card-img-top" alt="image not found">
+                        <p class="card-text" style="text-align: center"> {{ plant.name }} </p>
+                        <a href="{{ plant.get_absolute_url }}" class="btn btn-primary">Page</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no plants in the catalogue.</p>
+    {% endif %}
 {% endblock %}

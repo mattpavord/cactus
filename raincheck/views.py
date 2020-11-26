@@ -39,6 +39,12 @@ def catalogue_plant(request):
     return render(request, 'raincheck/catalogue_plant.html', {'form': form})
 
 
+def list_plants(request, plants=None):
+    if plants is None:
+        plants = Plant.objects.all()
+    render(request, 'raincheck/plant_list.html', {'plant_list': plants})
+
+
 class PlantListView(generic.ListView):
     model = Plant
 
