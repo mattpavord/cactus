@@ -1,10 +1,13 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>{{ plant.name }}</h1>
+    <div class="container" style="text-align: center">
+        <div class="burgundy-title"><h1>{{ plant.name }}</h1></div>
 
-    <p><strong>Location:</strong> <a href="">{{ plant.location }}</a></p>
-    <p><strong>Reference:</strong> {{ plant.reference }}</p>
-    <img src="{{  plant.image.url  }}" alt="{{ plant.image.url }}" width="500px" />
-
+        <p><strong>Location: </strong>{{ plant.location.region }}</p>
+        {% if plant.reference %}
+            <p><strong>Reference:</strong> {{ plant.reference }}</p>
+        {% endif %}
+        <img src="{{  plant.image.url  }}" alt="{{ plant.image.url }}" width="500px" />
+    </div>
 {% endblock %}
