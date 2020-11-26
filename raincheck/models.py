@@ -11,14 +11,17 @@ class Location(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return ', '.join([self.region, self.country])
+        if self.country:
+            return ', '.join([self.region, self.country])
+        else:
+            return self.region
 
 
 class Plant(models.Model):
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
     name = models.CharField(max_length=100, unique=True)
     reference = models.CharField(max_length=100)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to='plants')
     created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

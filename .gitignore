@@ -77,3 +77,6 @@ report.xml
 # Database
 db.sqlite3
 
+# Cactus Media
+cactushugger/media/
+

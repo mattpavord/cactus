@@ -1,9 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>{{ plant.name }}</h1>
+    <h1>{{ plant.name }}</h1>
 
-  <p><strong>Location:</strong> <a href="">{{ plant.location }}</a></p>
-  <p><strong>Reference:</strong> {{ plant.reference }}</p>
+    <p><strong>Location:</strong> <a href="">{{ plant.location }}</a></p>
+    <p><strong>Reference:</strong> {{ plant.reference }}</p>
+    <img src="{{  plant.image.url  }}" alt="{{ plant.image.url }}" width="500px" />
 
 {% endblock %}
