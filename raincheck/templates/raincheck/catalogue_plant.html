@@ -3,15 +3,12 @@
 {% block content %}
     <div class="container form-group skinny-form">
         <h3 class="burgundy-title"> Add a succulent to our database </h3>
-{#        {{ form.as_p }}#}
-        <form method="post">{% csrf_token %}
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+{#            {{ form.as_p }}#}
             {{ form.plant_name }}
-{#            <input type="text" id="plantName" name="plantname" placeholder="Plant name" class="mt-3">#}
             {{ form.location }}
-{#            <input type="text" id="location" name="location" placeholder="Location" class="mt-3">#}
             <p class="mt-3"><b>Photo:</b></p>
-            {{ form.photo }}
-{#            <input type="file" id="myFile" name="filename" class="form-control-file mt-1">#}
+            {{ form.image }}
             <input type="submit" value="Add plant" class="mt-5 btn btn-primary">
         </form>
     </div>

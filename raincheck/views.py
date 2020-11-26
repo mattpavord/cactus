@@ -1,8 +1,9 @@
+from django.conf import settings
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 
-from raincheck.models import Plant, CustomerPlant
+from raincheck.models import Plant, CustomerPlant, Location
 from raincheck.forms import CataloguePlantForm
 
 
@@ -21,14 +22,21 @@ def index(request):
 
 def catalogue_plant(request):
     if request.method == 'POST':
-        form = CataloguePlantForm(request.POST)
+        form = CataloguePlantForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            # do stuff here
+            image = form.cleaned_data['image']
+            plant_name = form.cleaned_data['plant_name']
+            location = form.cleaned_data['location']
+            location = Location.objects.create(region=location)
+            Plant.objects.create(
+                location=location,
+                name=plant_name,
+                image=image,
+            )
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = CataloguePlantForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'raincheck/catalogue_plant.html', {'form': form})
 
 
 class PlantListView(generic.ListView):
