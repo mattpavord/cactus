@@ -41,6 +41,18 @@ def catalogue_plant(request):
     return render(request, 'raincheck/catalogue_plant.html', {'form': form})
 
 
+@login_required(login_url='/login/')
+def my_garden(request):
+    user_id = request.user.id
+    plant_ids = CustomerPlant.objects.filter(customer_id=user_id).values_list('plant_id', flat=True)
+    plants = Plant.objects.filter(id__in=plant_ids)
+    if plants.exists():
+        return list_plants(request, plants)
+    else:
+        message = "Your garden is empty, add plants in the Plants menu"
+        return render(request, 'message.html', {"message": message})
+
+
 def list_plants(request, plants=None):
     if plants is None:
         plants = Plant.objects.all()

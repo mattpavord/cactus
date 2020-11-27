@@ -6,7 +6,7 @@
         <ul style="list-style-type: none">
             {% for plant in plant_list %}
                 <li>
-                    <div class="card" style="width: 18rem;">
+                    <div class="card expanding-image" style="width: 18rem;">
                         <a href="{{ plant.get_absolute_url }}">
                             <img src="{{ plant.image.url }}" class="card-img-top" alt="image not found">
                         </a>
