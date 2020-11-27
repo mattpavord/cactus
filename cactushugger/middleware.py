@@ -11,9 +11,9 @@ class AuthRequiredMiddleware:
         # the view (and later middleware) are called.
 
         response = self.get_response(request)
-        if not request.user.is_authenticated:
-            if request.path not in [reverse('signup'), reverse('login')]:
-                return HttpResponseRedirect(reverse('login'))
+        # if not request.user.is_authenticated:
+        #     if request.path not in [reverse('signup'), reverse('login')]:
+        #         return HttpResponseRedirect(reverse('login'))
 
         # Code to be executed for each request/response after
         # the view is called.

@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import generic
@@ -20,6 +21,7 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
+@login_required(login_url='/login/')
 def catalogue_plant(request):
     if request.method == 'POST':
         form = CataloguePlantForm(request.POST, request.FILES)
