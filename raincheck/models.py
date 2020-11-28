@@ -40,6 +40,9 @@ class CustomerPlant(models.Model):  # join table gives more flexibility than m2m
     def get_absolute_url(self):
         return reverse('customerplant-detail', args=[str(self.id)])
 
+    class Meta:
+        unique_together = ('plant_id', 'customer_id')
+
 
 class Email(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sent_emails")

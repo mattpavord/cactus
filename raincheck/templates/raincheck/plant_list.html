@@ -11,9 +11,14 @@
                             <img src="{{ plant.image.url }}" class="card-img-top" alt="image not found">
                         </a>
                         <p class="card-text" style="text-align: center"> {{ plant.name }} </p>
-                        <a href="{{ plant.get_absolute_url }}" class="btn btn-primary">Add to Garden</a>
+                        {%  if garden %}
+                            <a href="{% url 'remove_from_garden' plant_id=plant.id %}" class="btn btn-danger">Remove</a>
+                        {% else %}
+                            <a href="{% url 'add_to_garden' plant_id=plant.id %}" class="btn btn-primary">Add to Garden</a>
+                        {% endif %}
                     </div>
                 </li>
+                <br>
             {% endfor %}
         </ul>
     {% else %}

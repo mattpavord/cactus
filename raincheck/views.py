@@ -47,16 +47,18 @@ def my_garden(request):
     plant_ids = CustomerPlant.objects.filter(customer_id=user_id).values_list('plant_id', flat=True)
     plants = Plant.objects.filter(id__in=plant_ids)
     if plants.exists():
-        return list_plants(request, plants)
+        return render(request, 'raincheck/plant_list.html', {'plant_list': plants, 'garden': True})
     else:
         message = "Your garden is empty, add plants in the Plants menu"
         return render(request, 'message.html', {"message": message})
 
 
-def list_plants(request, plants=None):
-    if plants is None:
-        plants = Plant.objects.all()
-    render(request, 'raincheck/plant_list.html', {'plant_list': plants})
+def list_plants(request):
+    context = {
+        'plant_list': Plant.objects.all(),
+        'garden': False
+    }
+    render(request, 'raincheck/plant_list.html', context)
 
 
 class PlantListView(generic.ListView):
