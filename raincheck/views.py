@@ -54,11 +54,17 @@ def my_garden(request):
 
 
 def list_plants(request):
+    if request.user.is_authenticated:
+        garden_plant_ids = CustomerPlant.objects.filter(customer_id=request.user.id)\
+            .values_list("plant_id", flat=True)  # to show user what plants they already have
+    else:
+        garden_plant_ids = []
     context = {
         'plant_list': Plant.objects.all(),
-        'garden': False
+        'garden': False,
+        'garden_plant_ids': garden_plant_ids
     }
-    render(request, 'raincheck/plant_list.html', context)
+    return render(request, 'raincheck/plant_list.html', context)
 
 
 class PlantListView(generic.ListView):

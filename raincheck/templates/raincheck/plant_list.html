@@ -14,7 +14,12 @@
                         {%  if garden %}
                             <a href="{% url 'remove_from_garden' plant_id=plant.id %}" class="btn btn-danger">Remove</a>
                         {% else %}
-                            <a href="{% url 'add_to_garden' plant_id=plant.id %}" class="btn btn-primary">Add to Garden</a>
+                            {% if plant.id in garden_plant_ids %}
+                                <button type="button" class="btn btn-secondary btn-lg" disabled>In Garden</button>
+                            {% else %}
+                                <a href="{% url 'add_to_garden' plant_id=plant.id %}"
+                                   class="btn btn-primary">Add to Garden</a>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </li>
