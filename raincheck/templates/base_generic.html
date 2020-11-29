@@ -19,9 +19,6 @@
                         <a href="{% url 'index' %}">Home</a>
                     </div>
                     <div class="nav-link-wrapper">
-                        <a href="{% url 'login' %}">Login</a>
-                    </div>
-                    <div class="nav-link-wrapper">
                         <a href="{% url 'plants' %}">Plants</a>
                     </div>
                     <div class="nav-link-wrapper">
@@ -30,6 +27,15 @@
                     <div class="nav-link-wrapper">
                         <a href="{% url 'catalogue-plant' %}">Register plants</a>
                     </div>
+                    {% if user.is_authenticated %}
+                        <div class="nav-link-wrapper">
+                            <a href="{% url 'logout' %}">Log Out</a>
+                        </div>
+                    {% else %}
+                        <div class="nav-link-wrapper">
+                            <a href="{% url 'login' %}">Login</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {% endblock %}
