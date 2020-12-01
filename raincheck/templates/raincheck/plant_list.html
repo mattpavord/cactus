@@ -4,15 +4,20 @@
     <h1 class="burgundy-title">Plant List</h1>
     {% if plant_list %}
         <ul style="list-style-type: none">
+            <div class="row">
             {% for plant in plant_list %}
-                <li>
+                {% if forloop.counter0|divisibleby:4 %}
+                    </div><br><div class="row">
+                {% endif %}
+                <div class="col-4">
                     <div class="card expanding-image" style="width: 18rem;">
                         <a href="{{ plant.get_absolute_url }}">
                             <img src="{{ plant.image.url }}" class="card-img-top" alt="image not found">
                         </a>
                         <p class="card-text" style="text-align: center"> {{ plant.name }} </p>
                         {%  if garden %}
-                            <a href="{% url 'remove_from_garden' plant_id=plant.id %}" class="btn btn-danger">Remove</a>
+                            <a href="{% url 'remove_from_garden' plant_id=plant.id %}"
+                               class="btn btn-danger">Remove</a>
                         {% else %}
                             {% if plant.id in garden_plant_ids %}
                                 <button type="button" class="btn btn-secondary btn-lg" disabled>In Garden</button>
@@ -22,8 +27,7 @@
                             {% endif %}
                         {% endif %}
                     </div>
-                </li>
-                <br>
+                </div>
             {% endfor %}
         </ul>
     {% else %}
