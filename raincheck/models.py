@@ -7,6 +7,8 @@ class Location(models.Model):
     region = models.CharField(max_length=100, unique=True)
     country = models.CharField(max_length=50, null=True, blank=True)
     continent = models.CharField(max_length=20, null=True, blank=True)
+    longitude = models.FloatField(blank=True, null=True)
+    latitude = models.FloatField(blank=True, null=True)
     last_rained = models.DateTimeField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
 
