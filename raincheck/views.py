@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import generic
 
-from raincheck.models import Plant, CustomerPlant, Location
+from raincheck.models import Plant, CustomerPlant
 from raincheck.forms import CataloguePlantForm
-from raincheck.api_tasks import add_coordinate_to_location
+from raincheck.api_tasks import get_or_create_location_from_google_api
 
 
 def index(request):
@@ -31,10 +31,11 @@ def catalogue_plant(request):
             plant_name = form.cleaned_data['plant_name']
             location = form.cleaned_data['location']
             country = form.cleaned_data.get('country')
-            location = Location(region=location, country=country)
-            add_coordinate_to_location(location)
+            if country:
+                location = ', '.join([location, country])
+            location_obj = get_or_create_location_from_google_api(location)
             Plant.objects.create(
-                location=location,
+                location=location_obj,
                 name=plant_name,
                 image=image,
             )

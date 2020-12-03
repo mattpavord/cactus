@@ -9,25 +9,28 @@ WEATHER_API_KEY = settings.WEATHER_API_KEY
 GOOGLE_API_KEY = settings.GOOGLE_API_KEY
 
 
-def add_coordinate_to_location(location: Location):
-    location_str = location.region
-    if location.country:
-        location_str = ', '.join([location.region, location.country])
-    longitude, latitude = get_coordinates_from_location(location_str)
-    location.longitude = longitude
-    location.latitude = latitude
-    location.save()
-
-
-def get_coordinates_from_location(place: str) -> Tuple[float, float]:
+def get_or_create_location_from_google_api(location_str: str) -> Location:
     url = f'https://maps.googleapis.com/maps/api/geocode/' \
-          f'json?address={place}&key={GOOGLE_API_KEY}'
+          f'json?address={location_str}&key={GOOGLE_API_KEY}'
     response = requests.get(url)
-    data = json.loads(response.content)
-    coordinate_data = data['results'][0]['geometry']['bounds']
+    data = json.loads(response.content)['results'][0]
+
+    country = ''
+    region = location_str
+    for address_component in data['address_components']:
+        if 'administrative_area_level_2' in address_component['types']:
+            region = address_component['long_name']
+        if 'administrative_area_level_1' in address_component['types']:
+            country = address_component['long_name']
+    coordinate_data = data['geometry']['bounds']
     latitude = (coordinate_data['northeast']['lat'] + coordinate_data['southwest']['lat']) / 2
     longitude = (coordinate_data['northeast']['lng'] + coordinate_data['southwest']['lng']) / 2
-    return latitude, longitude
+
+    if Location.objects.filter(region=region).exists():
+        location = Location.objects.get(region=region)
+    else:
+        location = Location.objects.create(latitude=latitude, longitude=longitude, country=country, region=region)
+    return location
 
 
 def check_weather(longitude, latitude):
@@ -36,8 +39,3 @@ def check_weather(longitude, latitude):
           f"?lat={latitude}&lon={longitude}&appid={WEATHER_API_KEY}"
     response = requests.get(url)
     print(response.__dict__)
-
-
-if __name__ == '__main__':
-    print(get_coordinates_from_location('Woodhouse Eaves, Leicester'))
-    # check_weather()
