@@ -143,3 +143,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'cactushugger/media')
 
+# API KEYS
+WEATHER_API_KEY = os.environ.get('WEATHER_API_KEY', '')  # for checking weather
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')  # for converting address to coordinates
+

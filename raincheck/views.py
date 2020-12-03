@@ -6,6 +6,7 @@ from django.views import generic
 
 from raincheck.models import Plant, CustomerPlant, Location
 from raincheck.forms import CataloguePlantForm
+from raincheck.api_tasks import add_coordinate_to_location
 
 
 def index(request):
@@ -30,7 +31,8 @@ def catalogue_plant(request):
             plant_name = form.cleaned_data['plant_name']
             location = form.cleaned_data['location']
             country = form.cleaned_data.get('country')
-            location = Location.objects.create(region=location, country=country)
+            location = Location(region=location, country=country)
+            add_coordinate_to_location(location)
             Plant.objects.create(
                 location=location,
                 name=plant_name,
