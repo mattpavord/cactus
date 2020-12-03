@@ -2,15 +2,19 @@
 
 {% block content %}
     <div class="container form-group skinny-form">
-        <h1 class="burgundy-title"> Register succulent </h1>
         <form method="post" enctype="multipart/form-data">{% csrf_token %}
-            <p class="form-text mt-5">Plant Name</p>
+            <p class="form-text mt-5">Plant Name*</p>
             {{ form.plant_name }}
-            <p class="form-text">Location</p>
+            <p class="form-text mt-3">Location*</p>
             {{ form.location }}
-            <p class="form-text mt-5">Photo:</p>
+            <p class="form-text mt-3">Country</p>
+            {{ form.country }}
+            <p class="form-text mt-5">Photo*:</p>
             {{ form.image }}
-            <input type="submit" value="Add plant" class="mt-5 btn btn-primary">
+            <br>
+            <p class="form-text mt-5">*Required</p>
+            <br>
+            <input type="submit" value="Add plant" class="mt-3 btn btn-primary">
         </form>
     </div>
 {% endblock %}

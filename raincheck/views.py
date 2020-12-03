@@ -29,7 +29,8 @@ def catalogue_plant(request):
             image = form.cleaned_data['image']
             plant_name = form.cleaned_data['plant_name']
             location = form.cleaned_data['location']
-            location = Location.objects.create(region=location)
+            country = form.cleaned_data.get('country')
+            location = Location.objects.create(region=location, country=country)
             Plant.objects.create(
                 location=location,
                 name=plant_name,
