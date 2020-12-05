@@ -4,7 +4,8 @@
     <div class="container" style="text-align: center">
         <div class="burgundy-title"><h1>{{ plant.name }}</h1></div>
 
-        <p><strong>Location: </strong>{{ plant.location.region }}</p>
+        <p><strong>Region: </strong>{{ plant.location.region }}</p>
+        <p><strong>Country: </strong>{{ plant.location.country }}</p>
         {% if plant.reference %}
             <p><strong>Reference:</strong> {{ plant.reference }}</p>
         {% endif %}
