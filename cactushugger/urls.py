@@ -13,5 +13,5 @@ urlpatterns = [
     path('signup/', core_views.signup, name='signup'),
     path('', RedirectView.as_view(url='raincheck/', permanent=True)),
     path('login/', core_views.AdminLogin.as_view(), name='login'),
-    path('^logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    path('logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

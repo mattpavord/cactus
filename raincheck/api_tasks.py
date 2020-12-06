@@ -9,6 +9,13 @@ GOOGLE_API_KEY = settings.GOOGLE_API_KEY
 
 
 def get_or_create_location_from_google_api(location_str: str) -> Location:
+    """
+    Makes an api request to google geocoder to clean data and create a location object
+    This will:
+     - Add/clean the country
+     - Add the coordinates
+     - Not create duplicate locations based on region (administrative_area_level_1) according to google
+    """
     url = f'https://maps.googleapis.com/maps/api/geocode/' \
           f'json?address={location_str}&key={GOOGLE_API_KEY}'
     response = requests.get(url)
@@ -34,9 +41,16 @@ def get_or_create_location_from_google_api(location_str: str) -> Location:
     return location
 
 
-def check_weather(location: Location):
-    # url = f"http://api.openweathermap.org/data/2.5/weather?q=London&appid={API_KEY}"  # city
+def check_location_for_rain(location: Location) -> bool:
+    """
+    Makes an api request to openweathermap to check a location for weather,
+    does this by using longitude and latitude parameters of location
+    Returns boolean on whether it has rained or not
+    """
     url = f"http://api.openweathermap.org/data/2.5/weather" \
           f"?lat={location.latitude}&lon={location.longitude}&appid={WEATHER_API_KEY}"
     response = requests.get(url)
-    print(response.__dict__)
+    if response.status_code != 200:
+        raise NameError(response.content)
+    data = json.loads(response.content)
+    return 'rain' in data
