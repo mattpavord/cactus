@@ -29,6 +29,7 @@ def catalogue_plant(request):
         if form.is_valid():
             image = form.cleaned_data['image']
             plant_name = form.cleaned_data['plant_name']
+            latin_name = form.cleaned_data['latin_name']
             location = form.cleaned_data['location']
             country = form.cleaned_data.get('country')
             if country:
@@ -38,6 +39,7 @@ def catalogue_plant(request):
                 location=location_obj,
                 name=plant_name,
                 image=image,
+                latin_name=latin_name
             )
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
