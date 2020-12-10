@@ -22,6 +22,7 @@ class Location(models.Model):
 class Plant(models.Model):
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
     name = models.CharField(max_length=100, unique=True)
+    latin_name = models.CharField(max_length=100, unique=True, null=True, blank=True)
     reference = models.CharField(max_length=100)
     image = models.ImageField(blank=True, null=True, upload_to='plants')
     created = models.DateTimeField(auto_now_add=True, null=True)
