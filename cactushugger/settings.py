@@ -140,10 +140,13 @@ STATIC_URL = '/static/'
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'cactushugger/media')
+# MEDIA
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = os.environ.get('C_S3_BUCKET', '')
+AWS_S3_REGION_NAME = 'eu-west-1'
 
 # API KEYS
 WEATHER_API_KEY = os.environ.get('WEATHER_API_KEY', '')  # for checking weather
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')  # for converting address to coordinates
-
+AWS_ACCESS_KEY_ID = os.environ.get('C_AWS_ACCESS_KEY', '')  # for managing S3 media files
+AWS_SECRET_ACCESS_KEY = os.environ.get('C_AWS_SECRET_ACCESS_KEY', '')
